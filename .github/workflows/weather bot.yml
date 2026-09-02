@@ -2,11 +2,9 @@ name: Daily weather bot
 
 on:
   schedule:
-    # Runs hourly from 5:00 to 7:00 UTC, which covers 7:30 local time
-    # (Europe/Warsaw, UTC+1 or UTC+2 depending on DST). weather_bot.py
-    # checks the actual local time and only sends within its window,
-    # so only one of these runs will actually send a message.
-    - cron: "0 5-7 * * *"
+    # 4:30 UTC = 7:30 UTC+3. Fixed offset, no DST to account for,
+    # so a single daily trigger is enough.
+    - cron: "30 4 * * *"
   workflow_dispatch: {}   # lets you trigger it manually from the Actions tab to test
 
 jobs:
